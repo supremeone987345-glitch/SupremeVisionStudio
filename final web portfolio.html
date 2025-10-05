@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Vision Studio (Shakti) - Movie Reaction Video Editing Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ff6b00;
+            --primary-dark: #e55a00;
+            --dark: #0f0f0f;
+            --dark-light: #1a1a1a;
+            --light: #f5f5f5;
+            --gray: #888;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+        }
+        
+        .logo span {
+            color: var(--light);
+            font-weight: normal;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1489599804159-5d97fec9e93c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,107,0,0.2), transparent);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
+            animation: fadeInUp 1s ease 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+        }
+        
+        .cta-button:hover:before {
+            left: 100%;
+        }
+        
+        /* About section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--dark-light);
+            position: relative;
+        }
+        
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="%23ff6b00" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .skills-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .skills-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .skills-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        .skills-list li:before {
+            content: "▶";
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        /* USP section */
+        .usp {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .usp-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .usp-card {
+            background: linear-gradient(135deg, var(--dark-light), #222);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .usp-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Portfolio section */
+        .portfolio {
+            padding: 100px 0;
+            background-color: var(--dark-light);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background-color: var(--dark);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-image iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .portfolio-image .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #222, #333);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+        
+        .portfolio-info {
+            padding: 20px;
+        }
+        
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        /* Services section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .service-item {
+            background: linear-gradient(135deg, var(--dark-light), #222);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        .service-item:hover:before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-item p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Testimonials section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--dark-light);
+            position: relative;
+        }
+        
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--dark), #222);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 30px;
+            font-size: 100px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-video {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .testimonial-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Contact section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--dark);
+        }
+        
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 20px;
+        }
+        
+        .contact-link {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--light);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .portfolio-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .testimonial {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Supreme Vision Studio <span> (Shakti)</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Crafting Copyright-Safe Movie Reactions with Story Flow</h2>
+            <p>Engaging Reactions, Edited to Tell the Full Story</p>
+            <p>Hi, I'm Supreme (Shakti)</p>
+            <p>I specialize in editing movie reaction videos that are not only copyright-safe but also structured in a way that makes viewers feel like they're watching the movie itself, keeping them hooked from start to finish.</p>
+            <p>Let's work together to make your reactions stand out.</p>
+            <a href="https://ytjobs.co/talent/profile/166529?r=531&utm_campaign=share-profile&utm_ref=talent" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h3>Personal Story</h3>
+                    <p>For the past 1 year, I've been working with creators in the movie reaction niche, helping them transform raw recordings into polished, story-driven videos. My focus is not just on cutting and trimming, but on building the flow of the movie so that even first-time viewers stay hooked and enjoy the entire experience.</p>
+                </div>
+                <div class="about-text animate-on-scroll">
+                    <h3>Skills and Expertise</h3>
+                    <ul class="skills-list">
+                        <li>Editing Software: DaVinci Resolve</li>
+                        <li>Movie Reaction Editing: Long-form edits, keeping them copyright-safe and story-driven</li>
+                        <li>Highlight Cutting: Trimming long videos into engaging, watchable highlights</li>
+                        <li>YouTube Shorts Creation: Repurposing full reactions into Shorts/Reels for more reach</li>
+                        <li>Motion Graphics: Engaging intros, transitions, and text effects to enhance videos</li>
+                        <li>Thumbnail Design: Eye-catching thumbnails optimized for reaction content</li>
+                        <li>Channel Support: Helping clients with suggestions and strategies to improve their YouTube channels alongside editing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp">
+        <div class="container">
+            <h2 class="section-title">Unique Selling Proposition (USP)</h2>
+            <div class="usp-content animate-on-scroll">
+                <div class="usp-card">
+                    <p>What sets me apart is my ability to edit reaction videos like storytelling pieces, keeping the original movie's flow intact while making the reaction engaging, entertaining, and safe from copyright claims.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            
+            <h3 style="color: var(--primary); margin: 40px 0 20px;">Long-Form Movie Reactions</h3>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <iframe src="https://www.youtube.com/embed/HfbxNC7ahnM" title="Harry Potter Reaction" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Long Form</span>
+                        <h3>Harry Potter Reaction</h3>
+                        <p>Edited this magical Harry Potter reaction by balancing story flow and keeping the reactions engaging without copyright issues.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <iframe src="https://www.youtube.com/embed/UVkQwQKuabY" title="The Texas Chain Saw Massacre Reaction" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Long Form</span>
+                        <h3>The Texas Chain Saw Massacre Reaction</h3>
+                        <p>Handled the intense pacing of this horror classic reaction, ensuring smooth edits that highlight the scares and raw audience responses.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--primary); margin: 40px 0 20px;">Short Form Content (Shorts & Reels)</h3>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <iframe src="https://www.youtube.com/embed/okhCISpuUt4" title="Harry Potter Reaction Highlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Short Form</span>
+                        <h3>Harry Potter Reaction Highlight</h3>
+                        <p>Cut-down highlight from long reaction optimized for YouTube Shorts with engaging captions and fast-paced editing.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <iframe src="https://www.youtube.com/embed/A2afk9cH-0U" title="The Texas Chain Saw Massacre Reaction Highlight" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">Short Form</span>
+                        <h3>The Texas Chain Saw Massacre Reaction Highlight</h3>
+                        <p>Best reaction moments edited for maximum impact in under 60 seconds for YouTube Shorts and Instagram Reels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services Offered</h2>
+            <div class="services-grid">
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">🎬</div>
+                    <h3>Movie Reaction Editing</h3>
+                    <p>Long-form, copyright-safe editing that tells the complete story while keeping reactions engaging.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">📱</div>
+                    <h3>YouTube Shorts from Long Reactions</h3>
+                    <p>Creating engaging short-form content from your full reactions optimized for maximum reach.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">✨</div>
+                    <h3>Motion Graphics</h3>
+                    <p>Basic intros, transitions, and text effects to enhance your videos and make them stand out.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">🖼️</div>
+                    <h3>Thumbnails for Movie Reaction Channels</h3>
+                    <p>Eye-catching thumbnails optimized for reaction content that drive clicks and engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonial animate-on-scroll">
+                <div class="testimonial-video">
+                    <iframe src="https://www.youtube.com/embed/xM3yyyICGX8" title="Client Testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="testimonial-text">"Supreme is very professional and punctual when it comes to editing and working with my channel. He is attentive to the needs of my channel and also cares enough to give input to try and improve the quality of the work."</p>
+               <p class="testimonial-author">- <a href="https://ytjobs.co/talent/share-review/166529/92857?r=801&utm_campaign=share-review&utm_ref=talent" target="_blank" class="author-link">Rogue Rene</a></p>
+
+<style>
+.author-link {
+  color: #ff6b00;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: all 0.3s ease;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.author-link:hover {
+  color: #ffffff;
+  background-color: #ff6b00;
+  text-decoration: none;
+}
+
+.author-link:after {
+  content: " ↗";
+  font-size: 0.8em;
+}
+</style>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info animate-on-scroll">
+                <p>Ready to collaborate on your next project? Get in touch with me!</p>
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                    <a href="mailto:supreme.one987345@gmail.com" class="contact-link">supreme.one987345@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fab fa-discord"></i></span>
+                    <a href="https://discord.com/users/690543816905850910" class="contact-link">Discord</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@supreme.srs01"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/Supreme545436?t=G8FpzLMJ2_rQ5urEqVhV1Q&s=08"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Supreme Vision Studio (Shakti). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animated');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+    </script>
+</body>
+</html>
